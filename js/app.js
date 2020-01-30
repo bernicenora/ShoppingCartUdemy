@@ -31,5 +31,24 @@ function buyCourse(e){
 //Reads the HTML Information of the selected Course
 
 function getCourseInfo(course){
-    console.log(course);
+    //Object with course data
+    const courseInfo = {
+        image: course.querySelector('img').src,
+        title: course.querySelector('h4').textContent,
+        price: course.querySelector('.price span').textContent,
+        id: course.querySelector('a').getAttribute('data-id')
+    }
+    // Insert into shopping cart
+    addIntoCart(courseInfo);
+}
+
+//This is going to insert specific course into shopping cart
+function addIntoCart(course){
+    // Add a row in the table
+    const row = document.createElement('tr');
+
+    // Build the template
+    row.innerHTML = `
+    
+    `
 }
