@@ -141,9 +141,33 @@ function getFromLocalStorage(){
 function removeCourse(e){
     e.preventDefault();
 
+    let course, courseId;
+
+    // Remove the courses from the DOM
     if (e.target.classList.contains('remove')){
         e.target.parentElement.parentElement.remove();
+        course = e.target.parentElement.parentElement;
+        courseId = course.querySelector('a').getAttribute('data-id');
     }
+
+    // Remove the course from the Local Storage
+    removeCourseLocalStorage(courseId);
+}
+
+// Function to remove the course from Local Storage
+function removeCourseLocalStorage(id){
+    // Get local Storage data
+    let coursesLS  = getCoursesFromStorage();
+
+    // loop throughout the array and find the course index to remove
+    coursesLS.forEach(function(courseLS,index){
+        if (courseLS.id === id){
+            coursesLS.splice(index,1);
+        }
+    });
+
+    // Add the rest of the array
+    localStorage.setItem('courses', JSON.stringify(coursesLS));
 }
 
 // Function to Clear Cart
