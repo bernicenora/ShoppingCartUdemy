@@ -146,8 +146,16 @@ function removeCourse(e){
     }
 }
 
+// Function to Clear Cart
 function clearCart(){
     while(shoppingCartContent.firstChild){
         shoppingCartContent.removeChild(shoppingCartContent.firstChild);
     }
+
+    //Call the function to clear the Local storage
+    clearLocalStorage();
+}
+
+function clearLocalStorage(){
+    localStorage.clear();
 }
